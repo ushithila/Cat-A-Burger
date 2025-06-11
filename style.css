@@ -1,4 +1,8 @@
 /*Overall layout*/
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     margin: 0;
@@ -6,7 +10,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #EAE0BE;
+    background-color: #FFEDFA;
 }
 
 body {
@@ -31,14 +35,17 @@ main {
 .nav-links {
     display: flex;
     align-items: center;
-    background-color: #222;
+    background-color: #BE5985;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    font-size: large;
 }
 
 
 .nav-links li a {
+    transition: background-color 0.6s;
+    border-radius: 10px;
     display: block;
     color: white;
     text-align: center;
@@ -47,15 +54,17 @@ main {
 }
 
 .nav-bag {
+    transition: background-color 1.2s;
     margin-left: auto;
 }
 
 .nav-bag a:hover {
-    color: #f39c12;
+    color: #EC7FA9;
 }
 
 .nav-links li:not(.nav-bag) a:hover {
-    background-color: #f39c12;
+    border-radius: 10px;
+    background-color: #EC7FA9;
     margin: 0%;
 }
 
@@ -67,36 +76,30 @@ main {
 
 /*Banner image and content*/
 .hero-image {
-    background-image: url("images/banner.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/banner.png");
     height: 75%;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    margin: auto;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 5%;
     height: 75vh;
 }
 
 .hero-text {
-  text-align: center;
-  position: absolute;
-  top: 45%;
-  left: 30%;
-  transform: translate(-50%, -50%);
-  color: white;
+    text-align: center;
+    color: #FAF3E3;
 }
 
 /*Footer contents*/
 footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background-color: #222;
-    color: white;
+    background-color: #BE5985;
+    color: #FAF3E3;
     padding: 20px;
     flex-wrap: wrap;
 }
@@ -112,12 +115,136 @@ footer {
 }
 
 .social-icons a {
-    color: white;
-    font-size: 130%;
+    color: #FAF3E3;
     margin-right: 10px;
     text-decoration: none;
+    font-size: large;
 }
 
 .social-icons a:hover {
-    color: #f39c12;
+    color: #EC7FA9;
+}
+
+/*titles and contents*/
+.top-part {
+    background-color: #FFB8E0;
+    color: white;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: xx-large;
+}
+
+.bottom-part {
+    color: #222;
+    text-align: center;
+}
+
+/*Menu*/
+
+/*Contact*/
+.contact-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px 5%;
+    flex-wrap: wrap;
+}
+
+.map {
+    flex: 1;
+    width: 100%;
+    max-width: 600px;
+    margin-left: 0 auto;
+    margin-top: 90px;
+    height: 400px;
+    box-shadow: 0 4px 12px rgba(254, 0, 182, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    max-width: 400px;
+    min-width: 280px;
+    color: #222;
+    padding: 10px;
+}
+
+.contact-text {
+    flex: 1;
+    max-width: 400px;
+    min-width: 280px;
+    color: #222;
+    padding: 10px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+    background-color: #fff0f684;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(254, 0, 182, 0.15);
+    color: #222;
+}
+
+.contact-form h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #BE5985;
+}
+
+.contact-form label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #BE5985;
+}
+
+.contact-form button {
+    margin-top: 12px;
+    background-color: #BE5985;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #e72e8f;
 }

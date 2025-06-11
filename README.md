@@ -1,2 +1,2 @@
-# Burgers4You
+# CatABurger
 Homework #1

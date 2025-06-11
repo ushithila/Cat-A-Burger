@@ -1,0 +1,123 @@
+/*Overall layout*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #EAE0BE;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/*Navigation bar*/
+.nav-links {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.nav-links li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-bag {
+    margin-left: auto;
+}
+
+.nav-bag a:hover {
+    color: #f39c12;
+}
+
+.nav-links li:not(.nav-bag) a:hover {
+    background-color: #f39c12;
+    margin: 0%;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+/*Banner image and content*/
+.hero-image {
+    background-image: url("images/banner.png");
+    height: 75%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5%;
+    height: 75vh;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+/*Footer contents*/
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.hours-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-footer img {
+    height: 100px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 130%;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #f39c12;
+}

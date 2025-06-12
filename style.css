@@ -399,37 +399,59 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .logo img {
-    height: 40px;
-  }
+    .logo img {
+        height: 40px;
+    }
 
-  .hero-text h1 {
-    font-size: 1.5rem;
-  }
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
 
-  .order-button {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
+    .order-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
 
-  .top-part {
-    font-size: large;
-  }
+    .top-part {
+        font-size: large;
+    }
 
-  .menu-card h3 {
-    font-size: 1rem;
-  }
+    .menu-card h3 {
+        font-size: 1rem;
+    }
 
-  .menu-card p {
-    font-size: 0.85rem;
-  }
+    .menu-card p {
+        font-size: 0.85rem;
+    }
 
-  .contact-form h2 {
-    font-size: 1.3rem;
-  }
+    .contact-section {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .slider-track img {
-    width: 130px;
-    height: 200px;
-  }
+    .map {
+        order: 1;
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        order: 2;
+        text-align: center;
+    }
+
+    .contact-text,
+    .contact-form {
+        order: 3;
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .contact-form h2 {
+        font-size: 1.3rem;
+    }
+
+    .slider-track img {
+        width: 130px;
+        height: 200px;
+    }
 }

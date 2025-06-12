@@ -453,7 +453,7 @@ footer {
     .contact-form {
         order: 3;
         width: 100%;
-        max-width: 90%;
+        max-width: 100%;
     }
 
     .contact-form h2 {
@@ -469,6 +469,7 @@ footer {
         flex-direction: column;
         align-items: left;
         text-align: left;
+        align-items: flex-start;
     }
     
     .logo-footer{

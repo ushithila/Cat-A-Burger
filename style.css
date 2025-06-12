@@ -54,7 +54,6 @@ main {
 }
 
 .nav-bag {
-    transition: background-color 1.2s;
     margin-left: auto;
 }
 
@@ -94,8 +93,37 @@ main {
     color: #FAF3E3;
 }
 
+.order-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 40px;
+    background-color: #BE5985;
+    color: white;
+    text-decoration: none;
+    vertical-align: middle;
+    padding: 10px 20px;
+    line-height: 1;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+    background-color: #e72e8f;
+}
+
 /*Footer contents*/
 footer {
+    background-color: #BE5985;
+    color: #FAF3E3;
+    padding: 20px;
+}
+
+.footer-top {
     display: flex;
     justify-content: space-between;
     background-color: #BE5985;
@@ -104,19 +132,33 @@ footer {
     flex-wrap: wrap;
 }
 
-.hours-footer {
+.hours-footer,
+.logo-footer,
+.social-icons {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 10px;
+}
+
+.logo-footer {
+    flex: 1;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .logo-footer img {
     height: 100px;
 }
 
+.social-icons {
+    flex: 1;
+    text-align: right;
+}
+
 .social-icons a {
     color: #FAF3E3;
-    margin-right: 10px;
+    margin-right: 3px;
     text-decoration: none;
     font-size: large;
 }
@@ -124,6 +166,14 @@ footer {
 .social-icons a:hover {
     color: #EC7FA9;
 }
+
+.copyright {
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 10px;
+    border-top: 1px solid #ec7fa97b;
+}
+
 
 /*titles and contents*/
 .top-part {
@@ -139,11 +189,65 @@ footer {
 }
 
 .bottom-part {
+    margin: auto;
     color: #222;
     text-align: center;
+    width: 60%;
 }
 
 /*Menu*/
+.menu-section {
+    padding: 40px 5%;
+    text-align: center;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.menu-card {
+    background-color: #fff0f684;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(254, 0, 182, 0.15);
+    transition: transform 0.3s ease;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(254, 0, 182, 0.15);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.menu-card h3 {
+    margin: 8px 0 4px;
+    font-size: 1.2rem;
+    color: #BE5985;
+}
+
+.menu-card p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #e72e8f;
+}
 
 /*Contact*/
 .contact-section {
@@ -177,6 +281,7 @@ footer {
 .contact-info {
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 20px;
     flex: 1;
     max-width: 400px;
@@ -247,4 +352,84 @@ footer {
 
 .contact-form button:hover {
     background-color: #e72e8f;
+}
+
+/*Slider*/
+.slider-section {
+    width: 100%;
+    overflow: hidden;
+    margin: 40px auto;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.slider-container {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-track {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.slider-track img {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.slider-track img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .order-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .top-part {
+    font-size: large;
+  }
+
+  .menu-card h3 {
+    font-size: 1rem;
+  }
+
+  .menu-card p {
+    font-size: 0.85rem;
+  }
+
+  .contact-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .slider-track img {
+    width: 130px;
+    height: 200px;
+  }
 }

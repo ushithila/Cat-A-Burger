@@ -406,6 +406,31 @@ footer {
     transform: scale(1.05);
 }
 
+.slider-arrow {
+    background-color: rgba(190, 89, 133, 0.8);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.slider-arrow:hover {
+    background-color: #e72e8f;
+}
+
+.slider-arrow.left {
+    margin-right: 10px;
+}
+
+.slider-arrow.right {
+    margin-left: 10px;
+}
+
 
 @media (max-width: 480px) {
     .logo img {

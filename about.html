@@ -43,7 +43,8 @@
 
 
             <section class="slider-section">
-                <div class="slider-container">
+                <button class="slider-arrow left" onclick="scrollSlider('left')">&#10094;</button>
+                <div class="slider-container" id="sliderContainer">
                     <div class="slider-track">
                         <img src="images/image.png" alt="" />
                         <img src="images/image10.png" alt="" />
@@ -55,7 +56,7 @@
                         <img src="images/image2.png" alt="" />
                     </div>
                 </div>
-
+                <button class="slider-arrow right" onclick="scrollSlider('right')">&#10095;</button>
             </section>
             <a href="menu.html" class="order-button"> Order Now 😺</a>
         </div>
@@ -82,6 +83,7 @@
             © 2025 Cat A Burger
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>

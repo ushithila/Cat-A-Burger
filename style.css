@@ -470,6 +470,7 @@ footer {
         margin: 20px 0;
         width: 400px;
         height: 300px;
+        margin-bottom: auto;
     }
 
     .contact-info {

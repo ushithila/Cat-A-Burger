@@ -8,3 +8,8 @@ function scrollSlider(direction) {
         container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
 }
+
+function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("show");
+}

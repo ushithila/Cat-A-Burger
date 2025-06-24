@@ -81,13 +81,11 @@ const addtoCart = (item_id) => {
         cart.push({ product_id: item_id, quantity: 1 });
     }
     localStorage.setItem('carts', JSON.stringify(cart));
-    console.log(cart);
 }
 
 const addtoCartHTML = () => {
     itemCartHTML.innerHTML = '';
     let carts = JSON.parse(localStorage.getItem('carts')) || [];
-
     if (carts.length > 0) {
         carts.forEach(cart => {
             let product = itemProduct.find(p => p.id === cart.product_id);
@@ -95,13 +93,14 @@ const addtoCartHTML = () => {
 
             let newCart = document.createElement('div');
             newCart.classList.add('item');
+            newCart.dataset.id = cart.product_id;
             newCart.innerHTML = `
                     <div class="item">
                         <div class="name">
                             ${product.name}
                         </div>
                         <div class="total-price">
-                            $${product.price.toFixed(2)}
+                            $${(product.price * cart.quantity).toFixed(2)}
                         </div>
                         <div class="quantity">
                             <span class="minus"><</span>
@@ -114,5 +113,41 @@ const addtoCartHTML = () => {
     } else {
         itemCartHTML.innerHTML = '<p>Your cart is empty 😿</p>';
     }
+}
+
+if (itemCartHTML) {
+    itemCartHTML.addEventListener('click', (event) => {
+        let positionClick = event.target;
+        if (positionClick.classList.contains('plus') || positionClick.classList.contains('minus')) {
+            let product_id = positionClick.closest('[data-id]')?.dataset.id;
+            let type = 'minus';
+            if (positionClick.classList.contains('plus')) {
+                type = 'plus';
+            }
+            changeQuantity(product_id, type);
+        }
+    })
+}
+
+const changeQuantity = (product_id, type) => {
+    let carts = JSON.parse(localStorage.getItem('carts')) || [];
+    let positionOfItem = carts.findIndex((value) => value.product_id == product_id);
+    if (positionOfItem >= 0) {
+        switch (type) {
+            case 'plus':
+                carts[positionOfItem].quantity += 1;
+                break;
+            default:
+                let value = carts[positionOfItem].quantity - 1;
+                if (value > 0) {
+                    carts[positionOfItem].quantity = value;
+                } else {
+                    carts.splice(positionOfItem, 1);
+                }
+                break;
+        }
+    }
+    localStorage.setItem('carts', JSON.stringify(carts));
+    addtoCartHTML();
 }
 

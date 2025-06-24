@@ -18,7 +18,25 @@ function toggleMenu() {
 
 /* This is for the menu, adds a menu card with its info*/
 let itemListHTML = document.querySelector('.itemProduct');
+let itemCartHTML = document.querySelector('.listCart');
 let itemProduct = [];
+let carts = [];
+
+const initApp = () => {
+    fetch('items.json')
+        .then(response => response.json())
+        .then(data => {
+            itemProduct = data;
+            if (itemListHTML) {
+                addItem();
+                addtoCartHandle();
+            }
+            if (itemCartHTML) {
+                addtoCartHTML();
+            }
+        });
+};
+initApp();
 
 const addItem = () => {
     itemListHTML.innerHTML = '';
@@ -43,18 +61,20 @@ const addItem = () => {
     }
 }
 
-/*For when the user clicks the "Add to Cart" Button*/
-itemListHTML.addEventListener('click', (event) => {
-    let itemClick = event.target;
-    if (itemClick.classList.contains('add-to-cart')) {
-        let item_id = itemClick.closest('.menu-card')?.dataset.id;
-        addtoCart(item_id);
-    }
-})
+const addtoCartHandle = () => {
+    itemListHTML.addEventListener('click', (event) => {
+        let itemClick = event.target;
+        if (itemClick.classList.contains('add-to-cart')) {
+            let item_id = itemClick.closest('.menu-card')?.dataset.id;
+            addtoCart(item_id);
+        }
+    })
+}
+
 
 const addtoCart = (item_id) => {
     let cart = JSON.parse(localStorage.getItem('carts')) || [];
-    let positionOfItem = carts.findIndex((value) => value.product_id == item_id);
+    let positionOfItem = cart.findIndex((value) => value.product_id == item_id);
     if (positionOfItem >= 0) {
         cart[positionOfItem].quantity += 1;
     } else {
@@ -64,16 +84,15 @@ const addtoCart = (item_id) => {
     console.log(cart);
 }
 
-let itemCartHTML = document.querySelector('.listCart');
-let carts = [];
-
-addCarttoHTML = () => {
-
+const addtoCartHTML = () => {
     itemCartHTML.innerHTML = '';
     let carts = JSON.parse(localStorage.getItem('carts')) || [];
 
     if (carts.length > 0) {
         carts.forEach(cart => {
+            let product = itemProduct.find(p => p.id === cart.product_id);
+            if (!product) return;
+
             let newCart = document.createElement('div');
             newCart.classList.add('item');
             newCart.innerHTML = `
@@ -86,21 +105,14 @@ addCarttoHTML = () => {
                         </div>
                         <div class="quantity">
                             <span class="minus"><</span>
-                                    <span>1</span>
+                                    <span>${cart.quantity}</span>
                                     <span class="plus">></span>
                         </div>
                     </div>`;
             itemCartHTML.appendChild(newCart);
-        })
+        });
+    } else {
+        itemCartHTML.innerHTML = '<p>Your cart is empty 😿</p>';
     }
 }
 
-const initApp = () => {
-    fetch('items.json')
-        .then(response => response.json())
-        .then(data => {
-            itemProduct = data;
-            addItem();
-        });
-};
-initApp();

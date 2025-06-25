@@ -50,7 +50,7 @@ const addItem = () => {
                     <img src="${product.image}" alt="${product.name}">
                     <div class="menu-info">
                         <h3>${product.name}</h3>
-                        <p>${product.desc}r</p> 
+                        <p>${product.desc}</p> 
                         <span class="price">$${product.price.toFixed(2)}</span>
                         <button class="add-to-cart">Add to Cart</button>
                     </div>

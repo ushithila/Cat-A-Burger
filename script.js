@@ -71,6 +71,14 @@ const addtoCartHandle = () => {
     })
 }
 
+const showNotification = (message) => {
+    const notif = document.getElementById('notification');
+    notif.textContent = message;
+    notif.classList.add('show');
+    setTimeout(() => {
+        notif.classList.remove('show');
+    }, 2000);
+}
 
 const addtoCart = (item_id) => {
     let cart = JSON.parse(localStorage.getItem('carts')) || [];
@@ -81,16 +89,19 @@ const addtoCart = (item_id) => {
         cart.push({ product_id: item_id, quantity: 1 });
     }
     localStorage.setItem('carts', JSON.stringify(cart));
+    showNotification("Added to Cart 🐈!");
 }
+
 
 const addtoCartHTML = () => {
     itemCartHTML.innerHTML = '';
     let carts = JSON.parse(localStorage.getItem('carts')) || [];
+    let total = 0;
     if (carts.length > 0) {
         carts.forEach(cart => {
             let product = itemProduct.find(p => p.id === cart.product_id);
             if (!product) return;
-
+            total += product.price * cart.quantity;
             let newCart = document.createElement('div');
             newCart.classList.add('item');
             newCart.dataset.id = cart.product_id;
@@ -111,7 +122,16 @@ const addtoCartHTML = () => {
             itemCartHTML.appendChild(newCart);
         });
     } else {
-        itemCartHTML.innerHTML = '<p>Your cart is empty 😿</p>';
+        itemCartHTML.innerHTML = `
+  <div class="cart-message">
+    <h2>Your cart is empty 😿</h2>
+    <a href="menu.html" class="order-button" style="align-items=center"> Order Now 😺</a>
+  </div>`;
+    }
+
+    const totalPrice = document.getElementById('cart-total');
+    if (totalPrice) {
+        totalPrice.innerText = total.toFixed(2);
     }
 }
 
@@ -151,3 +171,14 @@ const changeQuantity = (product_id, type) => {
     addtoCartHTML();
 }
 
+
+const clearCart = document.getElementById('clear-btn');
+
+if (clearCart) {
+    clearCart.addEventListener('click', () => {
+        localStorage.removeItem('carts');
+        carts = [];
+        addtoCartHTML();
+        document.getElementById('cart-total').textContent = '0.00';
+    });
+}

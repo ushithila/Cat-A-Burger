@@ -32,6 +32,14 @@ main {
     flex-direction: column;
 }
 
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #BE5985;
+}
+
+
 /*Navigation bar*/
 .nav-links {
     display: flex;
@@ -86,7 +94,7 @@ main {
 
 /*Banner image and content*/
 .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/banner.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./banner.png");
     height: 75%;
     width: 100%;
     background-position: center;
@@ -281,7 +289,7 @@ footer {
     background-color: #e72e8f;
 }
 
-#notification {
+.notification {
     position: fixed;
     top: 20px;
     right: 10px;
@@ -295,7 +303,7 @@ footer {
     z-index: 9999;
 }
 
-#notification.show {
+.notification.show {
     opacity: 1;
     pointer-events: auto;
 }
